@@ -5,7 +5,7 @@
     font-family: 'Raleway', Arial, Helvetica, sans-serif;
 }
 .wrapper {
-    background-image: url(rainy.jpg);
+    background-image: url(assets/rainy.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
