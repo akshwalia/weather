@@ -14,7 +14,7 @@ const navigation = document.querySelector('.navigation');
 const left = document.getElementById('left');
 const right = document.getElementById('right');
 
-
+const circles = document.querySelectorAll('.circles img');
 
 let slide = 1;
 
@@ -97,5 +97,14 @@ right.addEventListener('click', () => {
         document.getElementById(`${slide}`).src = 'assets/svgs/circle.png';
     }
     getData(currentLocation,unit,slide);
-})
+});
+
+circles.forEach(circle => {
+    circle.addEventListener('click', () => {
+        document.getElementById(`${slide}`).src = 'assets/svgs/circle-outline.png';
+        slide = circle.id;
+        document.getElementById(`${slide}`).src = 'assets/svgs/circle.png';
+        getData(currentLocation,unit,slide);
+    })
+});
 
