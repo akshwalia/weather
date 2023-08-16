@@ -1,4 +1,4 @@
-import { displayDaily } from "./displayForecast";
+import { displayDaily, displayHourly } from "./displayForecast";
 import updateIcon from "./updateIcon";
 
 const currentWeather = document.getElementById('currentweathertext');
@@ -28,7 +28,7 @@ const hourly = document.getElementById('hourlybutton');
 
 
 
-export default function updatePage(object, unit) {
+export default function updatePage(object, unit, slide) {
     let i = 1;
     currentWeather.innerHTML = object.current.condition.text;
     location.innerHTML = object.location.name + ", " + object.location.country;
@@ -63,9 +63,10 @@ export default function updatePage(object, unit) {
 
     updateIcon(object.current.condition.text, todayIcon);
 
-    if(daily.className == 'selected') {
-        displayDaily(object,unit);
+    if(daily.classList.contains('selected')) {
+        displayDaily(object,unit,slide);
     }
 
-    
+    if(hourly.classList.contains('selected'))
+        displayHourly(object,unit,slide);
 }

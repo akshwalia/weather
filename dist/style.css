@@ -22,6 +22,7 @@
     padding: 80px 60px;
     padding-right: 100px;
     position: fixed;
+    width: 55%;
 }
 
 #todayicon {
@@ -48,7 +49,7 @@
 
 .units {
     position: relative;
-    left: 150px;
+    left: 20px;
     cursor: pointer;
 }
 
@@ -58,6 +59,7 @@
     margin-bottom: 40px;
     display: flex;
     gap: 30px;
+    align-items: center;
 }
 
 .buttons div {
@@ -77,9 +79,43 @@
     cursor: pointer;
 }
 
+.navigation {
+    display: flex;
+    gap: 20px;
+    visibility: hidden;
+}
+
+.circles {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.buttons .circles img{
+    width: 14px;
+    height: 14px;
+}
+
+.buttons img {
+    width: 30px;
+    filter: invert();
+    margin-left: -30px;
+}
+
 .forecastcontainer {
     display: flex;
     gap: 150px;
+}
+
+.hourlycontainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hourlycontainer img {
+    width: 50px;
+    filter: invert();
 }
 
 .forecastcontainer img {
