@@ -11,7 +11,7 @@ async function getData(city,unit,slide) {
 
     console.log(result);
 
-    updatePage(result,unit,slide);
+    return result;
 }
 
 export { getData };

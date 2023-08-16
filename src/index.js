@@ -1,4 +1,5 @@
 import { getData } from "./getData";
+import updatePage from "./updatePage";
 
 const url = "https://api.weatherapi.com/v1/forecast.json?key=1370a7ea90ac4b99baf223053231408&q=Dehradun&days=3";
 
@@ -21,18 +22,30 @@ let slide = 1;
 let unit = 'cel';
 let currentLocation = 'dehradun';
 
-getData('dehradun',unit);
+let result;
 
-searchbutton.addEventListener('click', () => {
+
+async function start() {
+    result = await getData('dehradun',unit);
+    updatePage(result,unit,slide);
+}
+
+start();
+
+
+searchbutton.addEventListener('click', async () => {
     currentLocation = searchbox.value;
-    getData(searchbox.value,unit);
+    result = await getData(searchbox.value,unit);
+    updatePage(result,unit,slide);
     searchbox.value = "";
+    
 })
 
-searchbox.addEventListener('keydown', (e) => {
+searchbox.addEventListener('keydown', async(e) => {
     if(e.key == 'Enter') {
         currentLocation = searchbox.value;
-        getData(searchbox.value,unit);
+        result = await getData(searchbox.value,unit)
+        updatePage(result,unit,slide);
         searchbox.value = "";
     }
 });
@@ -40,12 +53,12 @@ searchbox.addEventListener('keydown', (e) => {
 toggleUnit.addEventListener('click', () => {
     if(unit == 'cel') {
         unit = 'far';
-        getData(currentLocation,unit,slide);
+        updatePage(result,unit,slide);
         toggleUnit.innerHTML = "Display °C"
     }
     else {
         unit = 'cel';
-        getData(currentLocation,unit,slide);
+        updatePage(result,unit,slide);
         toggleUnit.innerHTML = "Display °F"
     }
 });
@@ -54,7 +67,7 @@ daily.addEventListener('click', () => {
     if(!daily.classList.contains('selected')) {
         hourly.classList.remove('selected');
         daily.classList.add('selected');
-        getData(currentLocation,unit);
+        updatePage(result,unit);
         navigation.style.visibility = 'hidden';
         slide=1;
     }
@@ -64,7 +77,7 @@ hourly.addEventListener('click', () => {
     if(!hourly.classList.contains('selected')) {
         daily.classList.remove('selected');
         hourly.classList.add('selected');
-        getData(currentLocation,unit,slide);
+        updatePage(result,unit,slide);
         navigation.style.visibility = 'visible';
         slide = 1;
     }
@@ -82,7 +95,7 @@ left.addEventListener('click', () => {
         document.getElementById(`${slide}`).src = 'assets/svgs/circle.png';
     }
 
-    getData(currentLocation,unit,slide);
+    updatePage(result,unit,slide);
 });
 
 right.addEventListener('click', () => {
@@ -96,7 +109,7 @@ right.addEventListener('click', () => {
         slide++;
         document.getElementById(`${slide}`).src = 'assets/svgs/circle.png';
     }
-    getData(currentLocation,unit,slide);
+    updatePage(result,unit,slide);
 });
 
 circles.forEach(circle => {
@@ -104,7 +117,7 @@ circles.forEach(circle => {
         document.getElementById(`${slide}`).src = 'assets/svgs/circle-outline.png';
         slide = circle.id;
         document.getElementById(`${slide}`).src = 'assets/svgs/circle.png';
-        getData(currentLocation,unit,slide);
+        updatePage(result,unit,slide);
     })
 });
 
