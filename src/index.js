@@ -69,6 +69,7 @@ daily.addEventListener('click', () => {
         daily.classList.add('selected');
         updatePage(result,unit);
         navigation.style.visibility = 'hidden';
+        document.getElementById(`${slide}`).src = 'assets/svgs/circle-outline.png';
         slide=1;
     }
 });
@@ -79,7 +80,7 @@ hourly.addEventListener('click', () => {
         hourly.classList.add('selected');
         updatePage(result,unit,slide);
         navigation.style.visibility = 'visible';
-        slide = 1;
+        document.getElementById(`${slide}`).src = 'assets/svgs/circle.png';
     }
 });
 
