@@ -6,7 +6,7 @@ const key = '1370a7ea90ac4b99baf223053231408';
 async function getData(city,unit,slide) {
     const URL = baseURL + city;
 
-    const response = await fetch(URL);
+    const response = await fetch(URL, {mode: 'cors'});
     const result = await response.json();
 
     console.log(result);
