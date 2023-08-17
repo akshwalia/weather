@@ -45,17 +45,12 @@ function displayDaily(object,unit,slide) {
 }
 
 function displayHourly(object,unit,slide) {
-    setTimeout(() => {
-        console.log("taking too long");
-        return;
-    },3000);
-
     let cardsDisplayed = 1;
     let completed = false;
     forecastContainer.innerHTML = "";
     hourlyContainer.innerHTML = "";
     
-    let currentHour = (new Date(object.current.last_updated)).toLocaleTimeString().substring(0, 2);
+    let currentHour = '13';
     currentHour = Number(currentHour);
 
     while(true) {
