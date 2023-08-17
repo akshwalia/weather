@@ -160,6 +160,11 @@ input:focus {
     color: rgb(168, 168, 168);
 }
 
+#error {
+    color: red;
+    padding-left: 4px;
+}
+
 svg {
     position: absolute;
     right: 0;
