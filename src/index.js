@@ -26,7 +26,7 @@ let result;
 
 
 async function start() {
-    result = await getData('dehradun',unit);
+    result = await getData(currentLocation,unit);
     updatePage(result,unit,slide);
 }
 
@@ -78,7 +78,7 @@ hourly.addEventListener('click', async () => {
     if(!hourly.classList.contains('selected')) {
         daily.classList.remove('selected');
         hourly.classList.add('selected');
-        result = await getData(currentLocation,unit);
+        result = await getData(currentLocation,unit,slide);
         updatePage(result,unit,slide);
         navigation.style.visibility = 'visible';
         document.getElementById(`${slide}`).src = 'assets/svgs/circle.png';
