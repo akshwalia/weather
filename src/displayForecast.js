@@ -46,7 +46,6 @@ function displayDaily(object, unit, slide) {
 }
 
 function displayHourly(object, unit, slide) {
-    console.log('executed');
 
     let cardsDisplayed = 1;
     let completed = false;
@@ -55,8 +54,6 @@ function displayHourly(object, unit, slide) {
 
     let currentHour = (new Date(object.current.last_updated)).getHours();
     currentHour = Number(currentHour);
-
-    console.log(currentHour);
 
     for (let i = currentHour + (slide - 1) * 6; i <= 23; i++) {
         const card = document.createElement('div');
