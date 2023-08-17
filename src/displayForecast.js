@@ -47,6 +47,7 @@ function displayDaily(object,unit,slide) {
 function displayHourly(object,unit,slide) {
     setTimeout(() => {
         console.log("taking too long");
+        return;
     },3000);
 
     let cardsDisplayed = 1;
