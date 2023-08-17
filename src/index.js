@@ -5,6 +5,7 @@ const url = "https://api.weatherapi.com/v1/forecast.json?key=1370a7ea90ac4b99baf
 
 const searchbox = document.getElementById('searchbox');
 const searchbutton = document.getElementById('searchbutton');
+const error = document.getElementById('error');
 
 const toggleUnit = document.getElementById('units');
 
@@ -34,14 +35,15 @@ start();
 
 
 searchbutton.addEventListener('click', async () => {
+    error.innerHTML = "";
     currentLocation = searchbox.value;
     result = await getData(searchbox.value,unit);
     updatePage(result,unit,slide);
     searchbox.value = "";
-    
 })
 
 searchbox.addEventListener('keydown', async(e) => {
+    error.innerHTML = "";
     if(e.key == 'Enter') {
         currentLocation = searchbox.value;
         result = await getData(searchbox.value,unit)
