@@ -74,10 +74,11 @@ daily.addEventListener('click', () => {
     }
 });
 
-hourly.addEventListener('click', () => {
+hourly.addEventListener('click', async () => {
     if(!hourly.classList.contains('selected')) {
         daily.classList.remove('selected');
         hourly.classList.add('selected');
+        result = await getData(searchbox.value,unit)
         updatePage(result,unit,slide);
         navigation.style.visibility = 'visible';
         document.getElementById(`${slide}`).src = 'assets/svgs/circle.png';

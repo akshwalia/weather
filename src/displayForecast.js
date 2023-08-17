@@ -50,7 +50,7 @@ function displayHourly(object,unit,slide) {
     forecastContainer.innerHTML = "";
     hourlyContainer.innerHTML = "";
     
-    let currentHour = '13';
+    let currentHour = (new Date(object.current.last_updated)).toLocaleTimeString().substring(0, 2);
     currentHour = Number(currentHour);
 
     while(true) {
