@@ -3,6 +3,7 @@ import updateIcon from "./updateIcon";
 const forecastContainer = document.querySelector('.forecastcontainer');
 const hourlyContainer = document.querySelector('.hourlycontainer');
 
+
 const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 function displayDaily(object, unit, slide) {
@@ -45,14 +46,17 @@ function displayDaily(object, unit, slide) {
 }
 
 function displayHourly(object, unit, slide) {
+    console.log('executed');
+
     let cardsDisplayed = 1;
     let completed = false;
     forecastContainer.innerHTML = "";
     hourlyContainer.innerHTML = "";
 
-    let currentHour = (new Date(object.current.last_updated)).toLocaleTimeString().substring(0, 2);
+    let currentHour = (new Date(object.current.last_updated)).getHours();
     currentHour = Number(currentHour);
 
+    console.log(currentHour);
 
     for (let i = currentHour + (slide - 1) * 6; i <= 23; i++) {
         const card = document.createElement('div');
