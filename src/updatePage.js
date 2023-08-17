@@ -30,6 +30,7 @@ const hourly = document.getElementById('hourlybutton');
 
 export default function updatePage(object, unit, slide) {
     let i = 1;
+    
     currentWeather.innerHTML = object.current.condition.text;
     location.innerHTML = object.location.name + ", " + object.location.country;
 
